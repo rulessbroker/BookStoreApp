@@ -2,11 +2,15 @@ package com.bridgelabz.bookstore.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.bridgelabz.bookstore.dto.ChangePasswordDTO;
 import com.bridgelabz.bookstore.dto.LoginDTO;
 import com.bridgelabz.bookstore.dto.UserDTO;
 import com.bridgelabz.bookstore.model.UserModel;
 
+@Component
 public interface IUserService {
 	public String registerUser(UserDTO userdto);
 
