@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class OrderDTO {
 	private Integer quantity;
-	@NotEmpty(message = "Please provide address")
+//	@NotEmpty(message = "Please provide address")
 	private String address;
 	private Integer userID;
 	private Integer bookID;

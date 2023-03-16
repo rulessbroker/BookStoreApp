@@ -10,9 +10,12 @@ import com.bridgelabz.bookstore.model.UserModel;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Integer> {
+	
+//	select user by email
 	@Query(value = "select * from user_details where email =:email", nativeQuery = true)
 	public Optional<UserModel> findByEmail(String email);
 
+//	delete user by email
 	@Query(value = "delete from user_details where email =:email", nativeQuery = true)
 	void deleteByEmail(String email);
 }

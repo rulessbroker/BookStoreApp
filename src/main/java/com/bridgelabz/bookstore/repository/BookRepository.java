@@ -11,8 +11,10 @@ import com.bridgelabz.bookstore.model.BookModel;
 @Repository
 public interface BookRepository extends JpaRepository<BookModel, Integer> {
 	
+//	Find Book by book name
 	public List<BookModel> findByBookName(String bookName);
-
+	
+//	Ordered book by price
 	@Query(value = "select * from book_model ORDER BY price", nativeQuery = true)
 	public List<BookModel> sortBooksAsc();
 

@@ -19,9 +19,9 @@ import com.bridgelabz.bookstore.service.IOrderService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
-@RequestMapping("/orderdetails")
+@RequestMapping("/bookstore/orders")
 public class OrderController {
 	// Autowired IOrderService dependency to inject its dependecy here
 	@Autowired
@@ -31,21 +31,21 @@ public class OrderController {
 	@PostMapping("/insert")
 	public ResponseEntity<ResponseDTO> insertOrder(@Valid @RequestBody OrderDTO orderdto) {
 		ResponseDTO dto = new ResponseDTO("Order registered successfully !", orderService.insertOrder(orderdto));
-		return new ResponseEntity(dto, HttpStatus.CREATED);
+		return new ResponseEntity<>(dto, HttpStatus.CREATED);
 	}
 
 	// Ability to call api retrieve all order records
 	@GetMapping("/retrieveAllOrders")
 	public ResponseEntity<ResponseDTO> getAllOrderRecords() {
 		ResponseDTO dto = new ResponseDTO("All records retrieved successfully !", orderService.getAllOrderRecords());
-		return new ResponseEntity(dto, HttpStatus.OK);
+		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
 	// Ability to call api to retrieve order records by id
 	@GetMapping("/retrieveOrder/{id}")
 	public ResponseEntity<ResponseDTO> getBookRecord(@PathVariable Integer id) {
 		ResponseDTO dto = new ResponseDTO("Record retrieved successfully !", orderService.getOrderRecord(id));
-		return new ResponseEntity(dto, HttpStatus.OK);
+		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
 	// Ability to call api to update order record by id
@@ -54,13 +54,13 @@ public class OrderController {
 			@Valid @RequestBody OrderDTO orderdto) {
 		ResponseDTO dto = new ResponseDTO("Record updated successfully !",
 				orderService.updateOrderRecord(id, orderdto));
-		return new ResponseEntity(dto, HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(dto, HttpStatus.ACCEPTED);
 	}
 
 	// Ability to call api to delete order record by id
 	@DeleteMapping("/deleteOrder/{id}")
 	public ResponseEntity<ResponseDTO> deleteOrderRecord(@PathVariable Integer id) {
 		ResponseDTO dto = new ResponseDTO("Record deleted successfully !", orderService.deleteOrderRecord(id));
-		return new ResponseEntity(dto, HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(dto, HttpStatus.ACCEPTED);
 	}
 }

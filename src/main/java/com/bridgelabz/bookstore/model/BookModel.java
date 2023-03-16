@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class BookModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Integer bookID;
+	private Integer bookId;
 	private String bookName;
 	private String authorName;
 	private Integer price;
@@ -33,7 +33,7 @@ public class BookModel {
 	}
 
 	public BookModel(Integer id, BookDTO dto) {
-		this.bookID = id;
+		this.bookId = id;
 		this.bookName = dto.getBookName();
 		this.authorName = dto.getAuthorName();
 		this.price = dto.getPrice();

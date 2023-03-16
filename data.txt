@@ -1,0 +1,86 @@
+***Registration
+---> main data 
+{
+	"fullName": "Rahul Bhosale",
+	"phoneNumber": "9822526974",
+	"email": "rahulbhosale5252@gmail.com",
+	"password": "Rahul@123"
+}
+
+--->Change password
+{
+	"email": "rahulbhosale5252@gmail.com",
+	"password: "Qwerty@123"
+}
+
+--->login data
+{
+	"email": "rahulbhosale5252@gmail.com",
+	"password: "Rahul@123"
+}
+
+
+***Book
+--->
+1
+{
+	"bookName":"Attitude is Everything",
+	"authorName":"Jeff Keller",
+"price":"149",
+	"quantity":"1",
+	"bookDescription":"Attitude Is Everything: Change Your Attitude ... Change Your Life!",
+	"bookImg":"none"
+}
+2
+{
+	"bookName":"Ikigai",
+	"authorName":"Héctor García",
+	"price":"407",
+	"quantity":"1",
+	"bookDescription":"Ikigai: The Japanese secret to a long and happy life [Hardcover] García, Héctor and Miralles, Francesc",
+	"bookImg":"none"
+}
+3
+{
+	"bookName":"The Power of Your Subconscious Mind",
+	"authorName":"Joseph Murphy ",
+	"price":"89",
+	"quantity":"1",
+	"bookDescription":"The Power of Your Subconscious Mind... Change Your Life!",
+	"bookImg":"none"
+}
+4
+{
+	"bookName":"The Psychology of Money",
+	"authorName":"Morgan Housel ",
+	"price":"210",
+	"quantity":"1",
+	"bookDescription":"Therefore, focus less on specific individuals and case studies and more on broad patterns.",
+	"bookImg":"none"
+}
+
+---> update quantity
+{	
+	"id":"1",
+	"newQuantity":"10"
+}
+
+
+***Cart
+---> Insert
+{
+	"userID":1,
+	"bookID":2,
+	"quantity":"0"	
+}
+
+***Order
+---> insert
+{
+	"quantity":"1",
+	"address":"Shahupuri, Satara",
+	"userID":"1",
+	"bookID":"",
+	"cancel":"false",
+	"cartID":"1"
+}

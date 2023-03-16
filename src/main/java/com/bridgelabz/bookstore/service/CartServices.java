@@ -94,7 +94,7 @@ public class CartServices implements ICartService {
 	// Ability to serve to controller's delete cart record by id api call
 	public CartModel deleteCartRecord(Integer id) {
 		Optional<CartModel> cart = cartRepo.findById(id);
-		Optional<BookModel> book = bookRepo.findById(cart.get().getBook().getBookID());
+		Optional<BookModel> book = bookRepo.findById(cart.get().getBook().getBookId());
 		if (cart.isEmpty()) {
 			throw new BookStoreException("Cart Record doesn't exists");
 		} else {
@@ -108,7 +108,7 @@ public class CartServices implements ICartService {
 	// Ability to serve to controller's update quantity of books in cart api call
 	public CartModel updateQuantity(QuantityDTO quantity) {
 		Optional<CartModel> cart = cartRepo.findById(quantity.getId());
-		Optional<BookModel> book = bookRepo.findById(cart.get().getBook().getBookID());
+		Optional<BookModel> book = bookRepo.findById(cart.get().getBook().getBookId());
 		if (cart.isEmpty()) {
 			throw new BookStoreException("Cart Record doesn't exists");
 		} else {

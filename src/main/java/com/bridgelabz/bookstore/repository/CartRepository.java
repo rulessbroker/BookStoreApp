@@ -10,9 +10,12 @@ import com.bridgelabz.bookstore.model.CartModel;
 
 @Repository
 public interface CartRepository extends JpaRepository<CartModel, Integer> {
+	
+//	select card by book id
 	@Query(value = "select * from cart where bookid =:bookId", nativeQuery = true)
 	List<CartModel> findByBookId(Integer bookId);
 
+//	select card by user id
 	@Query(value = "select * from cart where userid =:userId", nativeQuery = true)
 	List<CartModel> findByUserId(Integer userId);
 

@@ -1,0 +1,8 @@
+{
+	"firstName":"Rahul",
+	"lastName":"Bhosale",
+	"dateOfBirth":"29 Sept 1999",
+	"email":"rahulbhosale5252@gmail.com",
+	"Password":"Rahul@123",
+	"registerDate":"12 Jan 2023"
+}

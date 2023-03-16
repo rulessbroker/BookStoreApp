@@ -1,6 +1,6 @@
 package com.bridgelabz.bookstore.service;
 
-import java.util.List;
+import java.util.List;	
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,9 @@ import com.bridgelabz.bookstore.exception.BookStoreException;
 import com.bridgelabz.bookstore.model.UserModel;
 import com.bridgelabz.bookstore.repository.UserRepository;
 import com.bridgelabz.bookstore.util.EmailService;
+//import com.bridgelabz.bookstore.util.OTPGenerator;
 import com.bridgelabz.bookstore.util.TokenUtil;
+
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +32,9 @@ public class UserService implements IUserService {
 
 	@Autowired
 	TokenUtil util;
+	
+	@Autowired
+//    private OTPGenerator otpGenerator;
 
 	// Ability to serve controller's insert user record api call
 	public String registerUser(UserDTO userdto) {
@@ -39,6 +44,7 @@ public class UserService implements IUserService {
 		} else {
 			UserModel newUser = new UserModel(userdto);
 			userRepo.save(newUser);
+//			user.setOtp(otpGenerator.generateOTP());
 			String message = newUser.getFullName();
 			mailService.sendEmail(userdto.getEmail(), "Account Registration successfully",
 					"Hello" + " Your Account has been created.");
@@ -50,7 +56,7 @@ public class UserService implements IUserService {
 	public UserModel userLogin(LoginDTO logindto) {
 		Optional<UserModel> newUser = userRepo.findByEmail(logindto.getEmail());
 		if (logindto.getEmail().equals(newUser.get().getEmail())
-				&& logindto.getPassword().equals(newUser.get().getPassword())) {
+				&& logindto.getNewPassword().equals(newUser.get().getPassword())) {
 			String token = util.createToken(newUser.get().getUserID());
 			mailService.sendEmail(logindto.getEmail(), "Account Sign-up successfully", "\nHello " + logindto.getEmail()
 					+ " Your Account has been Loggin Successfully.Your token is " + token);
@@ -136,6 +142,7 @@ public class UserService implements IUserService {
 		}
 	}
 
+//	Delete User Using JWT token
 	public String deleteUserByToken(String token) {
 		Integer userIdToken = util.decodeToken(token);
 		Optional<UserModel> user = userRepo.findById(userIdToken);
@@ -148,5 +155,6 @@ public class UserService implements IUserService {
 		}
 
 	}
+	
 
 }
